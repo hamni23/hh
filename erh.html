@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERH STORE | All Loader erh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Tajawal:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff0000;
+            --primary-glow: #ff4d4d;
+            --primary-dark: #440000;
+            --bg-dark: #000000;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Tajawal', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            perspective: 2000px;
+            margin: 0;
+        }
+
+        /* ----- Advanced Cyber-Space Background ----- */
+        #canvas-bg {
+            position: fixed;
+            top: 0; left: 0;
+            z-index: -1;
+        }
+
+        /* Star Layer (Large Stars) */
+        .stars-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 10px);
+            background-size: 550px 550px;
+            animation: starsMove 60s linear infinite;
+        }
+
+        /* Star Layer (Small Dust) */
+        .dust-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -3;
+            background-image: radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 5px);
+            background-size: 350px 350px;
+            animation: starsMove 100s linear infinite;
+        }
+
+        @keyframes starsMove {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
+        }
+
+        /* CRT Overlay Effect - Deep Red Tone */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(10, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(100, 0, 0, 0.02), rgba(255, 0, 0, 0.04));
+            z-index: 1000;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+        }
+        /* ----- End Cyber-Space Background ----- */
+
+        .cyber-card {
+            background: rgba(10, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 0, 0, 0.2);
+            border-radius: 40px;
+            box-shadow: 0 0 100px rgba(255, 0, 0, 0.2), inset 0 0 30px rgba(0, 0, 0, 1);
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            position: relative;
+        }
+
+        /* Animated Red Border */
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), transparent, var(--primary-dark));
+            border-radius: 42px;
+            z-index: -1;
+            opacity: 0.5;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(2); }
+            100% { filter: brightness(1); }
+        }
+
+        .glitch-text {
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 20px var(--primary);
+            color: white;
+            animation: glitchEffect 5s infinite;
+        }
+        @keyframes glitchEffect {
+            0% { text-shadow: 0 0 20px var(--primary); }
+            95% { text-shadow: 0 0 20px var(--primary); }
+            96% { text-shadow: -5px -2px #00fffb, 5px 2px #ff00de; }
+            97% { text-shadow: 0 0 20px var(--primary); }
+            100% { text-shadow: 0 0 20px var(--primary); }
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, #550000, #ff0000, #550000);
+            background-size: 200% auto;
+            clip-path: polygon(7% 0, 100% 0, 93% 100%, 0% 100%);
+            transition: 0.5s;
+            font-family: 'Orbitron', sans-serif;
+            animation: moveGradient 3s linear infinite;
+        }
+
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--primary);
+            letter-spacing: 3px;
+        }
+
+        /* Password Area - Cyber Box */
+        .pass-container {
+            background: rgba(255, 0, 0, 0.04);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 25px;
+            box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+
+        .status-pulse {
+            width: 12px; height: 12px;
+            background: #00ff00;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #00ff00;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            70% { transform: scale(2.2); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .footer-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px;
+            letter-spacing: 8px;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center">
+
+    <div class="stars-container"></div>
+    <div class="dust-container"></div>
+    <canvas id="canvas-bg"></canvas>
+
+    <div id="container" class="relative z-10 w-full max-w-lg p-6">
+        
+        <div id="card" class="cyber-card p-12">
+            
+            <div class="text-center mb-10">
+                <div class="relative inline-block">
+                    <div class="absolute inset-0 bg-red-600 blur-[60px] opacity-40 animate-pulse"></div>
+                    <h1 class="glitch-text text-7xl font-black italic tracking-tighter uppercase">ERH</h1>
+                </div>
+                <div class="h-[1px] w-full bg-gradient-to-r from-transparent via-red-600 to-transparent my-4 opacity-70"></div>
+                <p class="text-[9px] tracking-[0.5em] text-red-500 font-bold uppercase">All Loader erh</p>
+            </div>
+
+            <div class="relative rounded-3xl overflow-hidden mb-8 border border-red-900/30 group">
+                <div class="absolute top-4 right-4 z-20 flex items-center gap-2 bg-black/90 px-5 py-2.5 rounded-full border border-red-900/50 backdrop-blur-md">
+                    <div class="status-pulse"></div>
+                    <span class="text-[10px] font-black uppercase text-white tracking-widest">System Online</span>
+                </div>
+                <img src="https://media.discordapp.net/attachments/1210461026659860500/1493723591575994398/Image_2c670z2c670z2c67.png?ex=69e00200&is=69deb080&hm=6bf4c0f13b44f81cb4ee5c14c61cbd4a8e41f4d39ef87bd6f18dcd8d8990c7cb&=&format=webp&quality=lossless" 
+                     class="w-full grayscale group-hover:grayscale-0 transition-all duration-1000">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent group-hover:from-red-950/40 transition-all duration-700"></div>
+            </div>
+
+            <div class="space-y-4">
+                <a href="https://cdn.discordapp.com/attachments/1210461026659860500/1493606643169230908/ERH_STORE.rar?ex=69df9515&is=69de4395&hm=4b5e711400e434c8bb0d13abfb5c1a6d9d468b29ec39cbe1a2708676e286d270&" 
+                   onclick="window.open('https://discord.gg/erh', '_blank');" 
+                   class="btn-main block w-full py-6 text-center text-2xl font-black italic text-white shadow-lg shadow-red-900/40">
+                    DOWNLOAD NOW
+                </a>
+
+                <div class="flex gap-4 pt-1">
+                    <a href="https://erh.rmz.gg/" target="_blank" class="flex-1 py-4 rounded-xl bg-red-950/20 border border-red-600/30 text-center text-[10px] font-bold uppercase tracking-widest text-red-500 hover:bg-red-600 hover:text-white transition-all shadow-md">
+                        Buy Key
+                    </a>
+                    <a href="https://discord.gg/erh" target="_blank" class="flex-1 py-4 rounded-xl bg-red-950/20 border border-red-600/30 text-center text-[10px] font-bold uppercase tracking-widest text-red-500 hover:bg-red-600 hover:text-white transition-all shadow-md">
+                        Support
+                    </a>
+                </div>
+            </div>
+
+            <div class="pass-container flex flex-col items-center justify-center border border-red-800/20 shadow-inner shadow-black">
+                <span class="text-[8px] font-bold text-red-500 uppercase tracking-[0.5em] mb-3">Pass key</span>
+                <div class="flex items-center gap-4 bg-black/60 px-6 py-3 rounded-2xl border border-red-600/30 shadow-md shadow-red-900/10 relative">
+                    <div class="absolute inset-0 bg-red-600 opacity-5 blur-[10px] rounded-2xl"></div>
+                    <code id="password" class="text-3xl font-mono font-black tracking-widest text-white relative z-10">pass : 1</code>
+                    <button onclick="copyPass()" class="p-2.5 hover:bg-red-600 rounded-xl transition-colors group relative z-10">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center opacity-70 hover:opacity-100 transition">
+                <p class="footer-tag uppercase"> All Loader erh</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Particle & Neural Net System - RED Space Theme
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const maxParticles = 120;
+        const maxDistance = 150;
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+            }
+            update(xMove = 0, yMove = 0) {
+                this.x += this.speedX + xMove * 0.05;
+                this.y += this.speedY + yMove * 0.05;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 0, 0, 0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            particles = [];
+            for (let i = 0; i < maxParticles; i++) particles.push(new Particle());
+        }
+
+        function drawLines() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255, 0, 0, ${1 - distance / maxDistance - 0.5})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+        }
+
+        let currentMouseX = 0, currentMouseY = 0;
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { 
+                p.update(currentMouseX, currentMouseY); 
+                p.draw(); 
+            });
+            drawLines();
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => { initCanvas(); createParticles(); });
+        initCanvas(); createParticles(); animateParticles();
+
+        // 3D Mouse Tilt & Background interaction
+        const container = document.getElementById('container');
+        const card = document.getElementById('card');
+        container.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            currentMouseX = (clientX / window.innerWidth - 0.5) * 5; // تأثير خفيف للخلفية
+            currentMouseY = (clientY / window.innerHeight - 0.5) * 5;
+            
+            const xPos = (clientX / window.innerWidth - 0.5) * 30;
+            const yPos = (clientY / window.innerHeight - 0.5) * -30;
+            card.style.transform = `rotateY(${xPos}deg) rotateX(${yPos}deg)`;
+        });
+        
+        container.addEventListener('mouseleave', () => {
+             card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+             currentMouseX = 0; currentMouseY = 0;
+        });
+
+        function copyPass() {
+            const pass = "1";
+            navigator.clipboard.writeText(pass);
+            alert("تم نسخ رمز فك الضغط (pass : 1)");
+        }
+    </script>
+</body>
+</html>
